@@ -9,6 +9,7 @@ import Register from "../Authentication/Register";
 import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "../Providers/PrivateRoute"
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddCamp from "../Pages/Dashboard/AddCamp/AddCamp";
 
 
 
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: 'allUsers',
         element: <AllUsers></AllUsers>
+      },
+      {
+        path: 'addCamp',
+        element: <AddCamp></AddCamp>
       }
     
 
