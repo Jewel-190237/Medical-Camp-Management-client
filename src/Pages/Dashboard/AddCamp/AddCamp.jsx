@@ -4,10 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import { MdAddCircle } from "react-icons/md";
+import "react-datepicker/dist/react-datepicker.css";
+import useAxios from "../../../Hooks/useAxios";
+
 
 const AddCamp = () => {
     // UseTitle('Create Assignment')
 
+    const axiosSecure = useAxios();
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext);
     const email = user.email;
@@ -28,27 +32,41 @@ const AddCamp = () => {
 
         const newAssignment = { email, assignmentName, difficultyLevel, assignmentTitle, assignmentMark, photo_url, dueTime, description }
 
-        console.log(newAssignment)
+        console.log(newAssignment);
 
-        fetch('https://assignment-11-server-livid-pi.vercel.app/assignments', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newAssignment)
-        })
-        
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
+        axiosSecure.post('/camps', newAssignment)
+            .then(res => {
+                console.log(res.data);
                 Swal.fire({
-                    icon: "success",
-                    title: "Assignment Added Successfully",
+                    icon: "Success",
+                    title: "Camp Added Successfully",
                     showConfirmButton: false,
                     timer: 2000
                 });
-                navigate('/assignments')
+                navigate('/')
+
             })
+
+
+        // fetch('https://assignment-11-server-livid-pi.vercel.app/assignments', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newAssignment)
+        // })
+
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         Swal.fire({
+        //             icon: "Success",
+        //             title: "Camp Added Successfully",
+        //             showConfirmButton: false,
+        //             timer: 2000
+        //         });
+        //         navigate('/')
+        //     })
     }
     return (
         <div className="bg-slate-700 rounded-xl w-10/12 mx-auto p-10">
