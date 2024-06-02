@@ -1,5 +1,5 @@
-import { FaBook, FaCalendarDay, FaHome, FaList, FaPaypal, FaShoppingCart,  FaUsers, FaUtensils } from "react-icons/fa";
-import { FaBookBible, FaMarsAndVenus, FaUsersViewfinder } from "react-icons/fa6";
+import { FaBook, FaCalendarDay, FaHome, FaList, FaPaypal, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaMarsAndVenus } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 
@@ -15,54 +15,48 @@ const Dashboard = () => {
                     {
                         isAdmin ?
                             <>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/adminHome'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/profile'>
                                     <FaHome></FaHome>
-                                    Admin Home</NavLink>
+                                    Profile</NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/addItems'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/addCamp'>
                                     <FaUtensils></FaUtensils>
-                                    Add Items</NavLink>
+                                    Add A Camp</NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/manageItems'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/manageCamp'>
                                     <FaList></FaList>
-                                    Manage Items</NavLink>
+                                    Manage Camp</NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/manageBookings'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/manageRegisteredCamp'>
                                     <FaBook></FaBook>
-                                    Manage Bookings</NavLink>
+                                    Manage Manage Registered Camp</NavLink>
                                 </li>
                                 <li className="p-1 uppercase text-white"><NavLink to='/dashboard/allUsers'>
                                     <FaUsers></FaUsers>
                                     All Users</NavLink>
                                 </li>
-                                
+
                             </>
                             :
                             <>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/userHome'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/profile'>
                                     <FaHome></FaHome>
-                                    User Home</NavLink>
+                                    Profile</NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/Reservation'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/Analytics'>
                                     <FaCalendarDay></FaCalendarDay>
-                                    Reservation</NavLink>
+                                    Analytics</NavLink>
                                 </li>
                                 <li className="p-1 uppercase text-white"><NavLink to='/dashboard/paymentHistory'>
                                     <FaPaypal></FaPaypal>
                                     Payment History</NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/cart'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/RegisterCamp'>
                                     <FaShoppingCart></FaShoppingCart>
-                                    My Cart</NavLink>
+                                    Registered Camps
+                                </NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/addReview'>
-                                    <FaUsersViewfinder></FaUsersViewfinder>
-                                    Add Review</NavLink>
-                                </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/myBooking'>
-                                    <FaBookBible></FaBookBible>
-                                    My Booking</NavLink>
-                                </li>
+    
                             </>
                     }
 
