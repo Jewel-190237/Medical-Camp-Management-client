@@ -9,7 +9,9 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
 
+    
     const { user, logOutUser } = useContext(AuthContext);
+    console.log(user);
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
     useEffect(() => {
@@ -71,7 +73,7 @@ const Navbar = () => {
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         {
-                                            user.photoURL ?
+                                            user.photoURL?
                                                 <img alt="user" src={user.photoURL} />
                                                 :
                                                 <img alt="user" src={user1} />

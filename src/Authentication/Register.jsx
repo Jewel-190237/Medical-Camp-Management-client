@@ -10,8 +10,6 @@ import { AuthContext } from "../Providers/AuthProvider";
 // import UseTitle from "../Components/Pages/Layouts/UseTitle";
 
 
-
-
 const Register = () => {
     // UseTitle('Register')
 
@@ -22,7 +20,6 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
-
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -30,14 +27,16 @@ const Register = () => {
         const name = form.get('name');
         const email = form.get('email');
         const password = form.get('password');
+        const photoURL = form.get('photoURL');
 
         const userInfo = {
             name: name,
-            email: email
+            email: email,
+            photo: photoURL
         }
 
         setPasswordError('');
-        console.log(name, email, password);
+        console.log(name, email, password, photoURL);
 
         const uppercase = /[A-Z]/.test(password);
         const lowercase = /[a-z]/.test(password);
@@ -95,6 +94,12 @@ const Register = () => {
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">photoURL</span>
+                                </label>
+                                <input type="text" name="photoURL" placeholder="photoURL" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
