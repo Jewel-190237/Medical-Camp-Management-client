@@ -1,0 +1,22 @@
+
+#link a.active{
+    border: 2px solid aquamarine;
+    border-radius: 10px;
+    color: rgb(6, 236, 21);
+    background-color: #FFFFFF;
+    font-size: 15px;
+}
+#link1 a.active{
+    border: 2px solid aquamarine;
+    border-radius: 10px;
+    color: rgb(6, 236, 21);
+    background-color: #FFFFFF;
+    font-size: 15px;
+}
+#link2 a.active{
+    border: 2px solid aquamarine;
+    border-radius: 10px;
+    color: rgb(6, 236, 21);
+    background-color: #FFFFFF;
+    font-size: 15px;
+}
