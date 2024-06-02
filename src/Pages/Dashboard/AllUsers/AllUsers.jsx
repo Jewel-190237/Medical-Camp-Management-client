@@ -14,7 +14,6 @@ const AllUsers = () => {
             const res = await axiosSecure.get('/users')
             return res.data;
         }
-
     })
     console.log(users);
     const handleMakeAdmin = user => {

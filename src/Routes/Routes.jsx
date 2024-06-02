@@ -10,6 +10,7 @@ import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "../Providers/PrivateRoute"
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddCamp from "../Pages/Dashboard/AddCamp/AddCamp";
+import CampDetails from "../Pages/Home/Camp/CampDetails";
 
 
 
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/campDetails/:id',
+        element: <CampDetails></CampDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/singleCamp/${params}`)
       }
     ]
   },
