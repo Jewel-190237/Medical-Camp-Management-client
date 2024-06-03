@@ -28,7 +28,7 @@ const Dashboard = () => {
                                 </li>
                                 <li className="p-1 uppercase text-white"><NavLink to='/dashboard/manageRegisteredCamp'>
                                     <FaBook></FaBook>
-                                    Manage Manage Registered Camp</NavLink>
+                                    Manage Registered Camp</NavLink>
                                 </li>
                                 <li className="p-1 uppercase text-white"><NavLink to='/dashboard/allUsers'>
                                     <FaUsers></FaUsers>
