@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss'
 
 const ManageCamp = () => {
     const axiosSecure = useAxios();
+    
     const { data: camp = [], refetch } = useQuery({
         queryKey: ['camp'],
         queryFn: async () => {
@@ -15,8 +19,29 @@ const ManageCamp = () => {
 
     const handleDelete = id => {
         console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/deleteCamp/${id}`)
+                    .then(result => {
+                        console.log(result.data);
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Camp has been deleted.",
+                            icon: "success"
+                        });
+                        refetch();
+                    })
+            }
+        });
     }
-    refetch();
 
 
     return (
@@ -53,17 +78,15 @@ const ManageCamp = () => {
 
                                 <td>
                                     {item.campName}
-                                    {/* <br />
-                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
                                 </td>
                                 <th>{item.time}</th>
                                 <th>{item.location}</th>
                                 <th>{item.healthCarePName}</th>
                                 <th>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"></FaEdit> </button>
+                                    <button className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"></FaEdit> <Link to={`/updateCamp/${item._id}`}></Link> </button>
                                 </th>
                                 <th>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost btn-lg"><FaTrashAlt className="text-red-800"></FaTrashAlt></button>
+                                    <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-lg"><FaTrashAlt className="text-red-800"></FaTrashAlt></button>
                                 </th>
 
                             </tr>)
