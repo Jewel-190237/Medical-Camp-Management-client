@@ -1,13 +1,21 @@
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { MdAddCircle } from "react-icons/md";
+import useAxios from "../../../Hooks/useAxios";
+import Swal from "sweetalert2";
+import 'sweetalert2/dist/sweetalert2.css';
+import 'sweetalert2/src/sweetalert2.scss'
 
 const JoinCamp = () => {
+
+    const axiosSecure = useAxios();
     const { user } = useContext(AuthContext);
     console.log(user);
     const [emailUser, setUser] = useState([]);
     const camp = useLoaderData();
+
+    const navigate = useNavigate();
     // eslint-disable-next-line no-unused-vars
     const { _id, campName, healthCarePName, location, campFees } = camp;
 
@@ -38,9 +46,21 @@ const JoinCamp = () => {
 
         console.log(registeredInfo)
 
-        // const assignmentName = form.assignmentName.value;
-        // const difficultyLevel = form.difficultyLevel.value;
+        axiosSecure.post('/registeredUserCamp', registeredInfo)
+            .then(res => {
+                console.log(res.data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Camp Added successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                navigate('/');
+
+            })
     }
+    
+
     return (
         <div>
             {/* show previous information */}
