@@ -13,6 +13,7 @@ import AddCamp from "../Pages/Dashboard/AddCamp/AddCamp";
 import CampDetails from "../Pages/Home/Camp/CampDetails";
 import JoinCamp from "../Pages/Home/Camp/JoinCamp";
 import ManageCamp from "../Pages/Dashboard/ManageCamp/ManageCamp";
+import ManageRegisteredCamp from "../Pages/Dashboard/ManageRegisteredCamp/ManageRegisteredCamp";
 
 
 
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: 'manageCamp',
         element: <ManageCamp></ManageCamp>
+      },
+      {
+        path: 'manageRegisteredCamp',
+        element: <ManageRegisteredCamp></ManageRegisteredCamp>
       }
     
 
