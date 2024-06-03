@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../../Hooks/useAxios";
 import Banner from "../Banner/Banner";
 import ShowCamp from "../Camp/ShowCamp";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Home = () => {
-    const axiosSecure = useAxios();
+    // const axiosSecure = useAxios();
+    const axiosSecurePublic = useAxiosPublic();
 
     const { data: camps = [], refetch } = useQuery({
         queryKey: ['Users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/camps')
+            const res = await axiosSecurePublic.get('/camps')
             return res.data;
         }
     })

@@ -65,7 +65,7 @@ const ManageCamp = () => {
                                 <th>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost btn-lg"><FaTrashAlt className="text-red-800"></FaTrashAlt></button>
                                 </th>
-                                
+
                             </tr>)
                         }
                     </tbody>
