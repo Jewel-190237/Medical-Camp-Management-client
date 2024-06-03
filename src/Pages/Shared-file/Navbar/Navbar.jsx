@@ -9,9 +9,9 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
 
-    
+
     const { user, logOutUser } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
     useEffect(() => {
@@ -29,11 +29,13 @@ const Navbar = () => {
     }
 
     const navLinks = <>
-        {/* <li id="link"><NavLink to="/">Home</NavLink></li> */}
         <li id="link"> <NavLink to='/'>Home </NavLink> </li>
-        <li id="link1"> <NavLink to='/dashboard'>Dashboard</NavLink></li>
-        <li id="link1"> <NavLink to='/createAssignment'>Create Assignment</NavLink></li>
-        <li id="link1"> <NavLink to='/pendingAssignments'>Pending Assignments</NavLink></li>
+        <li id="link1"> <NavLink to='/availableCamp'>Available Camp</NavLink></li>
+        {
+            user &&
+            <li id="link1"> <NavLink to='/joinUs'>Join Us</NavLink></li>
+        }
+        
 
     </>
 
@@ -73,7 +75,7 @@ const Navbar = () => {
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         {
-                                            user.photoURL?
+                                            user.photoURL ?
                                                 <img alt="user" src={user.photoURL} />
                                                 :
                                                 <img alt="user" src={user1} />
@@ -83,7 +85,7 @@ const Navbar = () => {
                                 </div>
                                 <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 
-                                    <Link to='/myAssignments'> <li><a>Attempt Assignment</a></li> </Link>
+                                    <li> <NavLink to='/dashboard'>Dashboard</NavLink></li>
                                     <li onClick={handleSignOut}><a>Logout</a></li>
                                 </ul>
                             </div>

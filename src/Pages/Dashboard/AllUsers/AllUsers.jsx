@@ -75,7 +75,7 @@ const AllUsers = () => {
                 <h2 className="text-4xl">Total Users: {users.length}</h2>
                 <table className="table table-zebra w-full ">
                     {/* head */}
-                    <thead className="bg-orange-500 text-white">
+                    <thead className="bg-slate-700 text-white">
                         <tr>
                             <th>
                                 Sl No

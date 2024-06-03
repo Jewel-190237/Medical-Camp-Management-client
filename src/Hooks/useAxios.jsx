@@ -12,7 +12,7 @@ const useAxios = () => {
     const navigate = useNavigate();
 
     axiosSecure.interceptors.request.use(function (config) {
-        const token = localStorage.getItem('access-token');
+        const token = window.localStorage.getItem('access-token');
         console.log('Interceptors', token);
         config.headers.authorization = `Bearer ${token}`
         return config;
