@@ -20,9 +20,6 @@ const AddCamp = () => {
 
     const navigate = useNavigate();
 
-
-
-
 // E.Location
 
 

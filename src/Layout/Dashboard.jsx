@@ -1,5 +1,4 @@
 import { FaBook, FaCalendarDay, FaHome, FaList, FaPaypal, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
-import { FaMarsAndVenus } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 
@@ -9,7 +8,7 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
-            <div className="w-64 min-h-screen bg-orange-500">
+            <div className="w-64 min-h-screen bg-slate-700">
                 <ul className="menu p-4">
 
                     {
@@ -67,10 +66,6 @@ const Dashboard = () => {
                     <li className="p-1 uppercase text-white"><NavLink to='/'>
                         <FaHome></FaHome>
                         Home</NavLink>
-                    </li>
-                    <li className="p-1 uppercase text-white"><NavLink to='/menu'>
-                        <FaMarsAndVenus></FaMarsAndVenus>
-                        Order</NavLink>
                     </li>
 
                 </ul>

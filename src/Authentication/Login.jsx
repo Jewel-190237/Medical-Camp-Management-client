@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 import photo from "../assets/signIn.jpg"
 import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 // import UseTitle from "../Components/Pages/Layouts/UseTitle";
 // import UseTitle from "../layout/UseTitle";
 
@@ -18,6 +19,7 @@ const Login = () => {
 
     //  UseTitle('Login')
 
+    const axiosSecurePublic = useAxiosPublic()
     const location = useLocation();
     const naviGate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +38,16 @@ const Login = () => {
         try {
             // Attempt to sign in
             await signInUser(email, password);
+            axiosSecurePublic.post('/jwt', {email: email})
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data) {
+                            window.localStorage.setItem('access-token', res.data)
+                            // setUser(currentUser);
+                            // setLoading(false);
+                        }
+
+                    })
                 
             naviGate(location?.state ? location.state : '/');
             Swal.fire({
@@ -52,6 +64,7 @@ const Login = () => {
                 text: 'Please check your credentials and try again.'
             });
         }
+        
     }
 
     const handlesSignInWithGoogle = () => {
