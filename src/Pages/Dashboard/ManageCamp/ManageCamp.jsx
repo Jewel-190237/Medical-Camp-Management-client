@@ -7,7 +7,7 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 const ManageCamp = () => {
     const axiosSecure = useAxios();
-    
+
     const { data: camp = [], refetch } = useQuery({
         queryKey: ['camp'],
         queryFn: async () => {
@@ -83,7 +83,8 @@ const ManageCamp = () => {
                                 <th>{item.location}</th>
                                 <th>{item.healthCarePName}</th>
                                 <th>
-                                    <button className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"></FaEdit> <Link to={`/updateCamp/${item._id}`}></Link> </button>
+                                    <Link to={`/dashboard/updateCamp/${item._id}`}> <button className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"></FaEdit>  </button></Link>
+
                                 </th>
                                 <th>
                                     <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-lg"><FaTrashAlt className="text-red-800"></FaTrashAlt></button>

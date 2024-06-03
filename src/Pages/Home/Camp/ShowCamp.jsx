@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const ShowCamp = ({ camp }) => {
     const { _id, campName, healthCarePName, location, participantCount, photo_url, time,  campFees } = camp;
 
-    
     return (
         <div>
             <div className="card bg-slate-700 shadow-xl mb-4 p-4">
