@@ -15,6 +15,7 @@ import JoinCamp from "../Pages/Home/Camp/JoinCamp";
 import ManageCamp from "../Pages/Dashboard/ManageCamp/ManageCamp";
 import ManageRegisteredCamp from "../Pages/Dashboard/ManageRegisteredCamp/ManageRegisteredCamp";
 import UpdateCamp from "../Pages/Dashboard/UpdateCamp/UpdateCamp";
+import Profile from "../Pages/Dashboard/Profile/Profile";
 
 
 
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
     // element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       // general user can access
+      {
+        path: 'profile',
+        element: <Profile></Profile>
+      },
       
 
       // Only Admin can access
@@ -71,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: 'manageRegisteredCamp',
         element: <ManageRegisteredCamp></ManageRegisteredCamp>
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>
       },
       {
         // updateCamp
