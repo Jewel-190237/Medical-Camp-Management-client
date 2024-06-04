@@ -16,6 +16,7 @@ import ManageCamp from "../Pages/Dashboard/ManageCamp/ManageCamp";
 import ManageRegisteredCamp from "../Pages/Dashboard/ManageRegisteredCamp/ManageRegisteredCamp";
 import UpdateCamp from "../Pages/Dashboard/UpdateCamp/UpdateCamp";
 import Profile from "../Pages/Dashboard/Profile/Profile";
+import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 
 
 
@@ -86,6 +87,12 @@ export const router = createBrowserRouter([
         path: 'updateCamp/:id',
         element: <UpdateCamp></UpdateCamp>,
         loader: ({params}) => fetch(`http://localhost:5000/updateCamp/${params.id}`)
+      },
+      {
+        // updateCamp
+        path: 'updateProfile/:email',
+        element: <UpdateProfile></UpdateProfile>,
+        loader: ({params}) => fetch(`http://localhost:5000/updateProfile/${params.email}`)
       }
     ]
   }

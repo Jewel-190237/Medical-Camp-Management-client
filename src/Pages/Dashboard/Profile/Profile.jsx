@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
@@ -17,15 +19,15 @@ const Profile = () => {
     console.log(emailUser);
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className=" bg-base-100 w-1/2 shadow-xl mx-auto">
             <figure className="px-10 pt-10">
-                <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                <img src={emailUser[0]?.photo} alt="" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">Name: {emailUser[0].name}</h2>
-                <h2 className="card-title">Email: {emailUser[0].email}</h2>
+                <h2 className="card-title">Name: {emailUser[0]?.name}</h2>
+                <h2 className="card-title">Email: {emailUser[0]?.email}</h2>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                <Link to={`/dashboard/updateProfile/${emailUser[0]?.email}`}> <button  className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"> </FaEdit> Update Profile </button></Link>
                 </div>
             </div>
         </div>
