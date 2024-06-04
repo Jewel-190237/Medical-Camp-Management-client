@@ -1,22 +1,22 @@
-import { MdAddCircle } from "react-icons/md";
+import { MdUpdate } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.css';
 import 'sweetalert2/src/sweetalert2.scss'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import useAxios from "../../../Hooks/useAxios";
+import useAxios from "../../../Hooks/useAxios";
 import { useState } from "react";
 
 const UpdateCamp = () => {
     const camp = useLoaderData();
-    const {campName, participantCount, healthCarePName, campFees, photo_url, description, location } = camp;
+    const { _id, campName, participantCount, healthCarePName, campFees, photo_url, description, location } = camp;
 
     console.log(camp);
 
-    // const navigate = useNavigate();
-    // const axiosSecure = useAxios();
+    const navigate = useNavigate();
+    const axiosSecure = useAxios();
     const [startDate, setStartDate] = useState(new Date());
 
     const handleUpdateCamp = event => {
@@ -32,10 +32,33 @@ const UpdateCamp = () => {
         const description = form.description.value;
         const location = form.location.value;
 
-        const updateCamp = {campName, participantCount, healthCarePName, campFees, photo_url, time, description, location }
+        const updateCamp = { campName, participantCount, healthCarePName, campFees, photo_url, time, description, location }
 
         console.log(updateCamp);
-        
+        // /
+        Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+
+            if (result.isConfirmed) {
+                axiosSecure.put(`/updateCamp/${_id}`,updateCamp )
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                Swal.fire("Saved!", "", "success");
+                navigate('/dashboard/manageCamp');
+                
+            } else if (result.isDenied) {
+                Swal.fire("Changes are not saved", "", "info");
+            }
+        });
+
+
     }
     return (
         <div>
@@ -82,7 +105,7 @@ const UpdateCamp = () => {
                     </div>
                 </div>
                 <button className=" btn btn-block bg-emerald-800 btn-outline">
-                    <MdAddCircle className="text-xl"></MdAddCircle>
+                    <MdUpdate className="text-xl"></MdUpdate>
                     <input type="submit" value="Update Camp" />
                 </button>
             </form>
