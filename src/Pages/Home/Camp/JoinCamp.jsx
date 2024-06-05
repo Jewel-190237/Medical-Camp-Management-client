@@ -27,6 +27,8 @@ const JoinCamp = () => {
                 console.log(data)
             })
     }, [user])
+    const email = user?.email;
+    console.log(email)
 
     console.log(emailUser);
     console.log(emailUser[0]?.name);
@@ -42,7 +44,7 @@ const JoinCamp = () => {
         const phoneNumber = form.phoneNumber.value;
         const emergencyContact = form.emergencyContact.value;
 
-        const registeredInfo = { userName,campName, healthCarePName, location, campFees, age, gender, phoneNumber, emergencyContact};
+        const registeredInfo = { email,userName,campName, healthCarePName, location, campFees, age, gender, phoneNumber, emergencyContact};
 
         console.log(registeredInfo)
 

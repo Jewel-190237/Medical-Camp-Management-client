@@ -3,10 +3,10 @@
 import { FcViewDetails } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
-
-
 const ShowCamp = ({ camp }) => {
     const { _id, campName, healthCarePName, location, participantCount, photo_url, time,  campFees } = camp;
+    console.log(camp);
+    console.log(campName, campFees);
 
     return (
         <div>
