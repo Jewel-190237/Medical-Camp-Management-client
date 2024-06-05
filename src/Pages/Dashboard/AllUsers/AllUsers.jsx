@@ -16,6 +16,7 @@ const AllUsers = () => {
         }
     })
     console.log(users);
+    
     const handleMakeAdmin = user => {
         Swal.fire({
             title: "Are you sure?",
