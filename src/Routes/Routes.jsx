@@ -18,6 +18,7 @@ import UpdateCamp from "../Pages/Dashboard/UpdateCamp/UpdateCamp";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import RegisteredCamp from "../Pages/Dashboard/RegisteredCamp/RegisteredCamp";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: 'registeredCamp',
         element: <PrivateRoute> <RegisteredCamp></RegisteredCamp> </PrivateRoute>
+      },
+      {
+        path: 'payment',
+        element: <PrivateRoute> <Payment></Payment> </PrivateRoute>
       },
       
 

@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const RegisteredCamp = () => {
 
@@ -46,8 +47,8 @@ const RegisteredCamp = () => {
                                 Sl No
                             </th>
                             <th>Camp Name</th>
-                            <th>Fees</th> 
-                            <th>Participant Name</th>                           
+                            <th>Fees</th>
+                            <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +64,8 @@ const RegisteredCamp = () => {
                                     {item.campName}
                                 </td>
                                 <th>{item.campFees}</th>
-                                <th>{item.userName}</th>
+                                <th>{item.payment === 'paid' ? 'Paid' : <Link to='/dashboard/payment'> <button className="btn btn-outline ">Pay</button> </Link>}
+                                </th>
                             </tr>)
                         }
                     </tbody>
