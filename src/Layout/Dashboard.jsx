@@ -50,7 +50,7 @@ const Dashboard = () => {
                                     <FaPaypal></FaPaypal>
                                     Payment History</NavLink>
                                 </li>
-                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/RegisterCamp'>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/registeredCamp'>
                                     <FaShoppingCart></FaShoppingCart>
                                     Registered Camps
                                 </NavLink>

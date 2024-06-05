@@ -17,6 +17,7 @@ import ManageRegisteredCamp from "../Pages/Dashboard/ManageRegisteredCamp/Manage
 import UpdateCamp from "../Pages/Dashboard/UpdateCamp/UpdateCamp";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
+import RegisteredCamp from "../Pages/Dashboard/RegisteredCamp/RegisteredCamp";
 
 
 
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/campDetails/:id',
-        element: <CampDetails></CampDetails>,
+        element: <PrivateRoute> <CampDetails></CampDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/singleCamp/${params.id}`)
       },
       {
@@ -57,7 +58,11 @@ export const router = createBrowserRouter([
       // general user can access
       {
         path: 'profile',
-        element: <Profile></Profile>
+        element: <PrivateRoute> <Profile></Profile> </PrivateRoute>
+      },
+      {
+        path: 'registeredCamp',
+        element: <PrivateRoute> <RegisteredCamp></RegisteredCamp> </PrivateRoute>
       },
       
 
