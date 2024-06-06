@@ -7,10 +7,10 @@ const PaymentHistory = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxios();
 
-    const { data: payments } = useQuery({
+    const { data: payments = [] } = useQuery({
         queryKey: ['payments', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payment/${user?.email}`)
+            const res = await axiosSecure.get(`/payment?email=${user?.email}`)
             return res.data;
         }
     })
@@ -52,7 +52,7 @@ const PaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     );
 };
