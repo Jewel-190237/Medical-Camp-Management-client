@@ -29,7 +29,7 @@ const RegisteredCamp = () => {
             })
     }, [user]);
 
-    console.log('CampN', campN)
+    console.log('CampN', campN);
 
     return (
         <>
@@ -64,7 +64,7 @@ const RegisteredCamp = () => {
                                     {item.campName}
                                 </td>
                                 <th>{item.campFees}</th>
-                                <th>{item.payment === 'paid' ? 'Paid' : <Link to='/dashboard/payment'> <button className="btn btn-outline ">Pay</button> </Link>}
+                                <th>{item.payment === 'paid' ? 'Paid' : <Link to={`/dashboard/payment/${item._id}`}> <button className="btn btn-outline ">Pay</button> </Link>}
                                 </th>
                             </tr>)
                         }

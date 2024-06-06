@@ -19,6 +19,7 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import RegisteredCamp from "../Pages/Dashboard/RegisteredCamp/RegisteredCamp";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 
 
 
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/availableCamp',
+        element: <AvailableCamp></AvailableCamp>
       },
       {
         path: '/campDetails/:id',
@@ -66,10 +71,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoute> <RegisteredCamp></RegisteredCamp> </PrivateRoute>
       },
       {
-        path: 'payment',
-        element: <PrivateRoute> <Payment></Payment> </PrivateRoute>
+        path: 'payment/:id',
+        element: <PrivateRoute> <Payment></Payment> </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/camp/${params.id}`)
       },
-      
 
       // Only Admin can access
       {
