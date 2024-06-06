@@ -3,6 +3,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxios from "../../../Hooks/useAxios";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+import { useNavigate } from "react-router-dom";
+
 
 
 const CheckOutForm = ({ amount, campName }) => {
@@ -14,13 +18,16 @@ const CheckOutForm = ({ amount, campName }) => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price: amount })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
+        if (amount > 0) {
+            axiosSecure.post('/create-payment-intent', { price: amount })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
 
     }, [axiosSecure, amount])
 
@@ -56,7 +63,7 @@ const CheckOutForm = ({ amount, campName }) => {
             console.log('[PaymentMethod]', paymentMethod);
             setError('')
         }
-        const {paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {
@@ -65,12 +72,12 @@ const CheckOutForm = ({ amount, campName }) => {
                 }
             }
         })
-        if(confirmError){
+        if (confirmError) {
             console.log('Payment error')
         }
-        else{
+        else {
             console.log('Payment Intent', paymentIntent);
-            if(paymentIntent.status === 'succeeded'){
+            if (paymentIntent.status === 'succeeded') {
                 console.log('Transaction Id', paymentIntent.id);
                 settTransactionId(paymentIntent.id)
 
@@ -78,12 +85,24 @@ const CheckOutForm = ({ amount, campName }) => {
                 const payment = {
                     email: user?.email,
                     amount: amount,
-                    status: 'pending',
+                    status: 'Paid',
                     campName: campName,
                     transactionId: transactionId
                 }
 
                 console.log(payment);
+                const res = await axiosSecure.post('/payment', payment)
+                console.log(res);
+                if (paymentIntent.status === 'succeeded'){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Thank You Payment successfully done",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      navigate('/dashboard/paymentHistory');
+                }
+                
             }
         }
     };
