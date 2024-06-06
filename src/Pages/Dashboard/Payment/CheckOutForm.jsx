@@ -8,7 +8,6 @@ import 'sweetalert2/src/sweetalert2.scss'
 import { useNavigate } from "react-router-dom";
 
 
-
 const CheckOutForm = ({ amount, campName, id }) => {
 
     const axiosSecure = useAxios();
@@ -87,7 +86,8 @@ const CheckOutForm = ({ amount, campName, id }) => {
                     amount: amount,
                     status: 'Paid',
                     campName: campName,
-                    transactionId: paymentIntent.id
+                    transactionId: paymentIntent.id,
+                    participantName: user.displayName
                 }
 
                 console.log(payment);
