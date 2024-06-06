@@ -49,6 +49,9 @@ const RegisteredCamp = () => {
                             <th>Camp Name</th>
                             <th>Fees</th>
                             <th>Payment Status</th>
+                            <th>Conformation Status </th>
+                            <th>Cancel Button </th>
+                            <th>FeedBack</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,6 +69,9 @@ const RegisteredCamp = () => {
                                 <th>{item.campFees}</th>
                                 <th>{item.payment === 'paid' ? 'Paid' : <Link to={`/dashboard/payment/${item._id}`}> <button className="btn btn-outline ">Pay</button> </Link>}
                                 </th>
+                                <td>{item.conformationStatus}</td>
+                                <td> <button className="btn btn-outline">{item.cancelButton}</button></td>
+                                <td>{item.feedback}</td>
                             </tr>)
                         }
                     </tbody>
