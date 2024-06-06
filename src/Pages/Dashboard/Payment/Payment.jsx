@@ -1,14 +1,21 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import CheckOutForm from "./CheckOutForm";
+import { useLoaderData } from "react-router-dom";
 
-const stripePromise = loadStripe('')
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_SECRET_KEY)
 const Payment = () => {
+    const campData = useLoaderData();
+    // console.log(campData);
+    const amount = campData.campFees;
+    const campName = campData.campName;
+    // console.log(amount);
     return (
-        <div>
+        <div className="m-10">
             <div>
-            <Elements stripe={stripePromise}>
-
-            </Elements>
+                <Elements stripe={stripePromise}>
+                    <CheckOutForm amount={amount} campName={campName}></CheckOutForm>
+                </Elements>
             </div>
         </div>
     );
