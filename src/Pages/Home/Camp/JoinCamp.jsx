@@ -57,7 +57,7 @@ const JoinCamp = () => {
                     showConfirmButton: false,
                     timer: 2000
                 });
-                navigate('/');
+                navigate('/dashboard/registeredCamp');
 
             })
     }

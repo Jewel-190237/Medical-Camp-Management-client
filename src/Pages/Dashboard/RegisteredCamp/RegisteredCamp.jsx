@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import useAxios from "../../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
+import Swal from 'sweetalert2'
+import 'sweetalert2/src/sweetalert2.scss'
+
 const RegisteredCamp = () => {
 
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxios();
-    
+
     const { data: registeredCamp = [], refetch } = useQuery({
         queryKey: ['RegisteredCamp'],
         queryFn: async () => {
@@ -16,11 +19,35 @@ const RegisteredCamp = () => {
             return res.data;
         }
     })
-    console.log('A lot of Registered Camp in here',registeredCamp);
+    console.log('A lot of Registered Camp in here', registeredCamp);
 
 
-    const handleCancel = id => {
+    const handleCancel = async (id) => {
         console.log(id);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be cancel Payment",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, cancel it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/deleteRegisteredCamp/${id}`)
+                    .then(result => {
+                        console.log(result.data);
+                        Swal.fire({
+                            title: "canceled!",
+                            text: "Your payment has been canceled.",
+                            icon: "success"
+                        });
+                        refetch();
+                    })
+            }
+        });
+
     }
     refetch();
 
