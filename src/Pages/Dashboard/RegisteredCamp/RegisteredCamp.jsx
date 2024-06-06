@@ -1,35 +1,28 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import useAxios from "../../../Hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
 
 const RegisteredCamp = () => {
 
     const { user } = useContext(AuthContext);
-    // const [camp, setCamp] = useState([]);
-    const [campN, setCampN] = useState([]);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/registeredCampParticipant/${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setCamp(data)
-    //             console.log(data)
-    //         })
-    // }, [user])
-
-    // console.log(camp);
+    const axiosSecure = useAxios();
+    
+    const { data: registeredCamp = [], refetch } = useQuery({
+        queryKey: ['RegisteredCamp'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/registeredCampParticipantN?email=${user?.email}`)
+            return res.data;
+        }
+    })
+    console.log('A lot of Registered Camp in here',registeredCamp);
 
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/registeredCampParticipantN?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setCampN(data);
-            })
-    }, [user]);
-
-    console.log('CampN', campN);
+    const handleCancel = id => {
+        console.log(id);
+    }
+    refetch();
 
     return (
         <>
@@ -38,7 +31,7 @@ const RegisteredCamp = () => {
             </div>
 
             <div className="w-full mx-10">
-                <h2 className="text-4xl">Total Camp: {campN.length}</h2>
+                <h2 className="text-4xl">Total Camp: {registeredCamp.length}</h2>
                 <table className="table table-zebra w-full ">
                     {/* head */}
                     <thead className="bg-slate-700 text-white">
@@ -56,7 +49,7 @@ const RegisteredCamp = () => {
                     </thead>
                     <tbody>
                         {
-                            campN.map((item, index) => <tr key={item._id}>
+                            registeredCamp.map((item, index) => <tr key={item._id}>
                                 <th>
                                     <label>
                                         {index + 1}
@@ -70,7 +63,7 @@ const RegisteredCamp = () => {
                                 <th>{item.payment === 'paid' ? 'Paid' : <Link to={`/dashboard/payment/${item._id}`}> <button className="btn btn-outline ">Pay</button> </Link>}
                                 </th>
                                 <td>{item.conformationStatus}</td>
-                                <td> <button className="btn btn-outline">{item.cancelButton}</button></td>
+                                <td>{item.cancelButton === 'noCancel' ? <button disabled className="btn btn-outline">cancel</button> : <button onClick={() => handleCancel(item._id)} className="btn btn-outline">{item.cancelButton}</button>} </td>
                                 <td>{item.feedback}</td>
                             </tr>)
                         }

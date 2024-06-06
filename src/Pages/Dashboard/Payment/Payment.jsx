@@ -9,12 +9,13 @@ const Payment = () => {
     // console.log(campData);
     const amount = campData.campFees;
     const campName = campData.campName;
+    const id = campData._id;
     // console.log(amount);
     return (
         <div className="m-10">
             <div>
                 <Elements stripe={stripePromise}>
-                    <CheckOutForm amount={amount} campName={campName}></CheckOutForm>
+                    <CheckOutForm amount={amount} campName={campName} id={id}></CheckOutForm>
                 </Elements>
             </div>
         </div>

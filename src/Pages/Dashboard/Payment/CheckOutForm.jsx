@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const CheckOutForm = ({ amount, campName }) => {
+const CheckOutForm = ({ amount, campName, id }) => {
 
     const axiosSecure = useAxios();
     const [transactionId, settTransactionId] = useState('');
@@ -87,22 +87,27 @@ const CheckOutForm = ({ amount, campName }) => {
                     amount: amount,
                     status: 'Paid',
                     campName: campName,
-                    transactionId: transactionId
+                    transactionId: paymentIntent.id
                 }
 
                 console.log(payment);
-                const res = await axiosSecure.post('/payment', payment)
+                const res = await axiosSecure.post('/payment', payment);
+
+                // update registered camp database
+                const resUpdate = await axiosSecure.patch(`/updateRegisteredCamp/${id}`)
+
                 console.log(res);
-                if (paymentIntent.status === 'succeeded'){
+                console.log(resUpdate)
+                if (paymentIntent.status === 'succeeded') {
                     Swal.fire({
                         icon: "success",
                         title: "Thank You Payment successfully done",
                         showConfirmButton: false,
                         timer: 1500
-                      });
-                      navigate('/dashboard/paymentHistory');
+                    });
+                    navigate('/dashboard/paymentHistory');
                 }
-                
+
             }
         }
     };

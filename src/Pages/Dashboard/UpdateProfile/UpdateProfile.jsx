@@ -32,9 +32,9 @@ const UpdateProfile = () => {
             /* Read more about isConfirmed, isDenied below */
 
             if (result.isConfirmed) {
-                axiosSecurePublic.put(`/updateProfile/${user[0].email}`, currentUser)
+                axiosSecurePublic.put(`/updateProfile/${user[0]._id}`, currentUser)
                     .then(res => {
-                        console.log(res.data)
+                        console.log(res.data);
                     })
                 Swal.fire("Saved!", "", "success");
                 navigate('/dashboard/profile');
