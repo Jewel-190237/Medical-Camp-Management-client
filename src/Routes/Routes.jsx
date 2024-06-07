@@ -21,6 +21,8 @@ import RegisteredCamp from "../Pages/Dashboard/RegisteredCamp/RegisteredCamp";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 
 
@@ -64,6 +66,10 @@ export const router = createBrowserRouter([
     children: [
       // general user can access
       {
+        path: 'userHome',
+        element: <PrivateRoute> <UserHome></UserHome> </PrivateRoute>
+      },
+      {
         path: 'profile',
         element: <PrivateRoute> <Profile></Profile> </PrivateRoute>
       },
@@ -82,6 +88,10 @@ export const router = createBrowserRouter([
       },
 
       // Only Admin can access
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
       {
         path: 'allUsers',
         element: <AllUsers></AllUsers>

@@ -8,12 +8,17 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
+            
             <div className="w-64 min-h-screen bg-slate-700">
                 <ul className="menu p-4">
 
                     {
                         isAdmin ?
                             <>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/adminHome'>
+                                    <FaHome></FaHome>
+                                    Admin Home</NavLink>
+                                </li>
                                 <li className="p-1 uppercase text-white"><NavLink to='/dashboard/profile'>
                                     <FaHome></FaHome>
                                     Profile</NavLink>
@@ -38,6 +43,10 @@ const Dashboard = () => {
                             </>
                             :
                             <>
+                                <li className="p-1 uppercase text-white"><NavLink to='/dashboard/userHome'>
+                                    <FaHome></FaHome>
+                                    User Home</NavLink>
+                                </li>
                                 <li className="p-1 uppercase text-white"><NavLink to='/dashboard/profile'>
                                     <FaHome></FaHome>
                                     Profile</NavLink>
@@ -73,7 +82,6 @@ const Dashboard = () => {
             <div className="flex-1">
                 <Outlet></Outlet>
             </div>
-
         </div>
     );
 };
