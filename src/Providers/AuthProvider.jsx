@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import { app } from '../Firebase/Firebase.config';
 
@@ -11,14 +12,20 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const provider = new GoogleAuthProvider();
 
     const axiosSecurePublic = useAxiosPublic();
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            
+
             console.log(currentUser);
             if (currentUser) {
+                const currentUserInfo = {
+                    name: currentUser.displayName,
+                    email: currentUser.email,
+                    photo: currentUser.photoURL
+                }
                 const userInfo = { email: currentUser.email };
                 axiosSecurePublic.post('/jwt', userInfo)
                     .then(res => {
@@ -28,7 +35,6 @@ const AuthProvider = ({ children }) => {
                             setUser(currentUser);
                             setLoading(false);
                         }
-
                     })
             }
             else {
@@ -36,14 +42,14 @@ const AuthProvider = ({ children }) => {
                 setUser(null);
                 setLoading(false);
             }
-            
+
         })
         return () => {
-             unSubscribe;
+            unSubscribe;
         }
     }, [axiosSecurePublic])
 
-    
+
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -58,13 +64,19 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    const googleSignIn = () => {
+        setLoading(true)
+        return signInWithPopup(auth, provider)
+    }
+
     const authInfo = {
         user,
         loading,
         createUser,
         signInUser,
         logOutUser,
-        
+        googleSignIn
+
     }
 
     return (

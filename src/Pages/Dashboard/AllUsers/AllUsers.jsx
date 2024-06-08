@@ -82,7 +82,6 @@ const AllUsers = () => {
                                 Sl No
                             </th>
                             <th>Name</th>
-                            <th>Photo</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Action</th>
@@ -102,7 +101,6 @@ const AllUsers = () => {
                                     {/* <br />
                                     <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
                                 </td>
-                                <th><img className="w-1/12 rounded-full" src={item.photo} alt={item.name} /></th>
                                 <th>{item.email}</th>
                                 <th>
                                     { item.role === 'admin' ? 'Admin': <button onClick={() => handleMakeAdmin(item)} className="btn btn-ghost btn-lg bg-orange-500"><FaUsers className="text-white text-2xl  "></FaUsers></button>}

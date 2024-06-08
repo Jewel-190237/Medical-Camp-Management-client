@@ -16,6 +16,19 @@ const ManageRegisteredCamp = () => {
     })
     console.log(camp)
 
+    const handleConfirm = async (id) => {
+        console.log(id);
+        axiosSecure.patch(`/updateRegisteredCampAdmin/${id}`)
+            .then(result => {
+                console.log(result.data);
+                Swal.fire({
+                    title: "Confirmed!",
+                    text: "Payment confirmed successfully.",
+                    icon: "success"
+                });
+                refetch();
+            })
+    }
     const handleCancel = async (id) => {
         console.log(id);
 
@@ -77,12 +90,16 @@ const ManageRegisteredCamp = () => {
                                         {index + 1}
                                     </label>
                                 </th>
+                                {/* updateRegisteredCampAdmin */}
                                 <th>{item.userName}</th>
                                 <td>{item.campName}</td>
                                 <td>{item.campFees}</td>
                                 <th>{item.payment}</th>
-                                <th>{item.conformationStatus}</th>
-                                {/* <th>{item.cancelButton}</th> */}
+
+
+                                <th>{item.conformationStatus === 'confirmed' && item.payment === 'paid'  ? 'confirm': item.payment === 'paid' ? <button onClick={() => handleConfirm(item._id)} className="btn">pending</button> : <button disabled className="btn">pending</button> }  </th>
+
+
                                 <th> {item.payment === 'paid' && item.conformationStatus === 'confirmed' ? <button disabled className="btn"><ImCancelCircle className="text-2xl text-red-500"></ImCancelCircle> </button> : <button onClick={() => handleCancel(item._id)} className="btn"><GrStatusGood className="text-2xl text-green-400"></GrStatusGood></button>} </th>
                             </tr>)
                         }

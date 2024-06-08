@@ -21,7 +21,7 @@ const Profile = () => {
     return (
         <div className=" bg-base-100 w-1/2 shadow-xl mx-auto">
             <figure className="px-10 pt-10">
-                <img src={emailUser[0]?.photo} alt="" />
+                <img className="rounded-full mx-auto" src={emailUser[0]?.photo} alt= {emailUser[0]?.name} />
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">Name: {emailUser[0]?.name}</h2>

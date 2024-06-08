@@ -28,10 +28,12 @@ const UserHome = () => {
         <div>
             <h2 className="text-4xl">
                 <span> Welcome </span>
-                {
-                    currentUser[0]?.name ? currentUser[0].name : 'Back'
-                }
-                to Analytics
+                <span className="text-pink-800">
+                    {
+                        currentUser[0]?.name ? currentUser[0].name : 'Back'
+                    }
+                </span>
+                <span> to Analytics</span>
             </h2>
         </div>
     );
