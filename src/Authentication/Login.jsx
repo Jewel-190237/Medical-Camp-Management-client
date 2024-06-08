@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
-import { TiUserAdd } from "react-icons/ti";
+// import { TiUserAdd } from "react-icons/ti";
 import { FaSignInAlt } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
@@ -24,7 +23,7 @@ const Login = () => {
     const naviGate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
-    const { signInUser, googleSignIn, gitHubSignIn } = useContext(AuthContext)
+    const { signInUser, googleSignIn } = useContext(AuthContext)
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -33,22 +32,20 @@ const Login = () => {
         const email = form.get('email');
         const password = form.get('password');
 
-        
-
         try {
             // Attempt to sign in
             await signInUser(email, password);
-            axiosSecurePublic.post('/jwt', {email: email})
-                    .then(res => {
-                        console.log(res.data)
-                        if (res.data) {
-                            window.localStorage.setItem('access-token', res.data)
-                            // setUser(currentUser);
-                            // setLoading(false);
-                        }
+            axiosSecurePublic.post('/jwt', { email: email })
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data) {
+                        window.localStorage.setItem('access-token', res.data)
+                        // setUser(currentUser);
+                        // setLoading(false);
+                    }
 
-                    })
-                
+                })
+
             naviGate(location?.state ? location.state : '/');
             Swal.fire({
                 icon: 'success',
@@ -64,13 +61,22 @@ const Login = () => {
                 text: 'Please check your credentials and try again.'
             });
         }
-        
+
     }
 
     const handlesSignInWithGoogle = () => {
         googleSignIn()
             .then(result => {
-                console.log(result);
+                // console.log(result.user);
+                // console.log('LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL');
+
+                const currentUserInfo = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    photo: result.user.photoURL
+                }
+                // console.log(currentUserInfo);
+                axiosSecurePublic.post('/users', currentUserInfo);
                 naviGate(location?.state ? location.state : '/');
                 Swal.fire({
                     icon: 'success',
@@ -89,27 +95,6 @@ const Login = () => {
             });
     }
 
-    const handlesSignInWithGitHub = () => {
-        gitHubSignIn()
-            .then(result => {
-                console.log(result);
-                naviGate(location?.state ? location.state : '/');
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login successful!',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            })
-            .catch(error => {
-                console.error(error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Login failed',
-                    text: 'Please try again later.'
-                });
-            });
-    }
 
     return (
         <div>

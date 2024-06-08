@@ -126,7 +126,7 @@ const AddCamp = () => {
                 </div>
                 <button className=" btn btn-block bg-emerald-800 btn-outline">
                     <MdAddCircle className="text-xl"></MdAddCircle>
-                    <input type="submit" value="Create Assignment" />
+                    <input type="submit" value="Add Camp" />
                 </button>
             </form>
         </div>
