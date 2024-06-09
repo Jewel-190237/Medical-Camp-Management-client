@@ -50,12 +50,12 @@ export const router = createBrowserRouter([
       {
         path: '/campDetails/:id',
         element: <PrivateRoute> <CampDetails></CampDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/singleCamp/${params.id}`)
+        loader: ({params}) => fetch(`https://server-site-lilac.vercel.app/singleCamp/${params.id}`)
       },
       {
         path: '/joinCamp/:id',
         element: <JoinCamp></JoinCamp>,
-        loader: ({params}) => fetch(`http://localhost:5000/joinCamp/${params.id}`)
+        loader: ({params}) => fetch(`https://server-site-lilac.vercel.app/joinCamp/${params.id}`)
       }
     ]
   },
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <PrivateRoute> <Payment></Payment> </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/camp/${params.id}`)
+        loader: ({params}) => fetch(`https://server-site-lilac.vercel.app/camp/${params.id}`)
       },
 
       // Only Admin can access
@@ -116,13 +116,13 @@ export const router = createBrowserRouter([
         // updateCamp
         path: 'updateCamp/:id',
         element: <UpdateCamp></UpdateCamp>,
-        loader: ({params}) => fetch(`http://localhost:5000/updateCamp/${params.id}`)
+        loader: ({params}) => fetch(`https://server-site-lilac.vercel.app/updateCamp/${params.id}`)
       },
       {
         // updateCamp
         path: 'updateProfile/:email',
         element: <UpdateProfile></UpdateProfile>,
-        loader: ({params}) => fetch(`http://localhost:5000/updateProfile/${params.email}`)
+        loader: ({params}) => fetch(`https://server-site-lilac.vercel.app/updateProfile/${params.email}`)
       }
     ]
   }

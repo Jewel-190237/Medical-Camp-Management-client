@@ -58,8 +58,9 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
+                    {/* MediCare Camp */}
                     <img className="w-1/12 rounded-full" src={logo} alt="" />
-                    <h1 className="text-2xl text-center font-bold ml-4"><span className="text-green-300 text-3xl">S</span>tudy<span className="text-yellow-300 text-3xl">U</span>nity<span className="text-red-500 text-3xl">H</span>ub</h1>
+                    <h1 className="text-2xl text-center font-bold ml-4"><span className="text-green-300 text-3xl">M</span>edy<span className="text-yellow-300 text-3xl">C</span>are <span className="text-red-500 text-3xl">C</span>amp</h1>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
