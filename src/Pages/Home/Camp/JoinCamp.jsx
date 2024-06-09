@@ -20,7 +20,7 @@ const JoinCamp = () => {
     const { _id, campName, healthCarePName, location, campFees } = camp;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/joinUser/${user?.email}`)
+        fetch(`https://server-site-lilac.vercel.app/joinUser/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUser(data)

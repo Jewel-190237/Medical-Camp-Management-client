@@ -1,11 +1,25 @@
+import { useQuery } from "@tanstack/react-query";
 import { MdAddTask } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const CampDetails = () => {
 
     const camp = useLoaderData();
+    const axiosSecurePublic = useAxiosPublic();
     const { _id, campName, healthCarePName, location, participantCount, photo_url, time, campFees, description } = camp;
 
+    
+
+    const {data: registeredCampCount = [] } = useQuery({
+        queryKey: ['registeredCamp'],
+        queryFn: async () => {
+            const res = await axiosSecurePublic.get(`/registeredCampCount/${_id}`)
+            return res.data;
+        }
+    })
+
+    console.log('Registered Count',registeredCampCount);
     return (
         <div className="bg-slate-700 rounded-2xl p-4">
             <div>
@@ -48,7 +62,7 @@ const CampDetails = () => {
                     </div>
                 </div>
             </div>
-            <button  className="btn btn-outline btn-block my-2 bg-emerald-700 ">
+            <button className="btn btn-outline btn-block  my-2 bg-emerald-700 ">
             <Link to={`/joinCamp/${_id}`}>
                 <button className="flex gap-4">
                     <MdAddTask className="text-xl"></MdAddTask>
