@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import Banner from "../Banner/Banner";
 import ShowCamp from "../Camp/ShowCamp";
@@ -11,6 +12,14 @@ import d5 from '../../../assets/d5.jpg'
 import d6 from '../../../assets/d6.jpg'
 import vax from '../../../assets/vax.png'
 import FAQ from "../FAQ/FAQ";
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import { Rating } from "@smastrom/react-rating";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import '@smastrom/react-rating/style.css'
 
 
 const Home = () => {
@@ -25,6 +34,19 @@ const Home = () => {
         }
     })
     refetch();
+    const [camp, setCamp] = useState(6);
+
+    // reviews
+
+    const [review, setReview] = useState([]);
+    useEffect(() => {
+        fetch('https://server-site-lilac.vercel.app/reviews')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setReview(data);
+            })
+    }, [])
     return (
         <div>
             <Banner></Banner>
@@ -39,7 +61,7 @@ const Home = () => {
                 <div>
                     <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
                         {
-                            camps.map(camp => <ShowCamp key={camp._id} camp={camp}></ShowCamp>)
+                            camps.slice(0, camp).map(camp => <ShowCamp key={camp._id} camp={camp}></ShowCamp>)
                         }
                     </div>
                 </div>
@@ -177,9 +199,35 @@ const Home = () => {
             </div>
 
             {/* REview Section */}
+            <div className="divider mt-3"></div>
             <div>
-                
+                <div>
+                    <h2 className="text-3xl font-bold text-center mt-8 text-emerald-400">Reviews</h2>
+                    <p className="text-center mx-auto md:w-3/4 mb-10">
+                        <p>Transforming Feedback into Insight: Embrace the Wisdom of Our Customers Reviews. Discover firsthand experiences, sentiments, and invaluable insights, guiding us towards continual improvement and unwavering customer satisfaction. Join us in shaping tomorrows excellence, one review at a time</p>
+                    </p>
+                </div>
+                <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+
+                    {
+                        review.map(review => <SwiperSlide
+                            key={review._id}
+                        >
+                            <div>
+                                <Rating className="mx-auto"
+                                    style={{ maxWidth: 180 }}
+                                    value={review.rating}
+                                    readOnly
+                                />
+                                <p>{review.details}</p>
+                                <h3 className="text-center text-4xl text-orange-400">{review.name}</h3>
+                            </div>
+                        </SwiperSlide>)
+                    }
+                </Swiper>
             </div>
+            <div className="divider"></div>
+            
             {/* FAQ */}
             <div>
                 <FAQ></FAQ>

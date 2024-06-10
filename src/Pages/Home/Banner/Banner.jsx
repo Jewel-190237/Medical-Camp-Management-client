@@ -16,7 +16,7 @@ const Banner = () => {
                             <h1 className="text-4xl text-center">Efficiently Organize Medical Camps with Ease!</h1>
                             <p className="text-center">Welcome to our Medical Camp Management System, your comprehensive solution for orchestrating successful healthcare events. From scheduling and registration to resource allocation and reporting, our intuitive platform streamlines every aspect of medical camp management. With user-friendly interfaces and powerful features, we empower organizers to efficiently plan, execute, and evaluate medical camps.</p>
                             <div className="flex justify-evenly">
-                                <Link to='/assignments'><button className="btn btn-primary">Explore More</button></Link>
+                                <Link to='/availableCamp'><button className="btn btn-primary">Explore More</button></Link>
                                 <Link to='/login'><button className="btn btn-secondary">Lets Start</button></Link>
                             </div>
                         </div>
@@ -24,12 +24,45 @@ const Banner = () => {
                 </div>
                 <div id="item2" className="carousel-item w-full relative">
                     <img src={img2} className="w-full" />
+                    <div className="absolute rounded-2xl flex text-white gap-6 items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+                        <div className="w-2/3 mx-auto space-y-7 p-4">
+                            <h1 className="text-5xl text-center font-bold">Medical Camp Management System</h1>
+                            <h1 className="text-4xl text-center">Efficiently Organize Medical Camps with Ease!</h1>
+                            <p className="text-center">Welcome to our Medical Camp Management System, your comprehensive solution for orchestrating successful healthcare events. From scheduling and registration to resource allocation and reporting, our intuitive platform streamlines every aspect of medical camp management. With user-friendly interfaces and powerful features, we empower organizers to efficiently plan, execute, and evaluate medical camps.</p>
+                            <div className="flex justify-evenly">
+                                <Link to='/availableCamp'><button className="btn btn-primary">Explore More</button></Link>
+                                <Link to='/login'><button className="btn btn-secondary">Lets Start</button></Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="item3" className="carousel-item w-full relative">
                     <img src={img3} className="w-full" />
+                    <div className="absolute rounded-2xl flex text-white gap-6 items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+                        <div className="w-2/3 mx-auto space-y-7 p-4">
+                            <h1 className="text-5xl text-center font-bold">Medical Camp Management System</h1>
+                            <h1 className="text-4xl text-center">Efficiently Organize Medical Camps with Ease!</h1>
+                            <p className="text-center">Welcome to our Medical Camp Management System, your comprehensive solution for orchestrating successful healthcare events. From scheduling and registration to resource allocation and reporting, our intuitive platform streamlines every aspect of medical camp management. With user-friendly interfaces and powerful features, we empower organizers to efficiently plan, execute, and evaluate medical camps.</p>
+                            <div className="flex justify-evenly">
+                                <Link to='/availableCamp'><button className="btn btn-primary">Explore More</button></Link>
+                                <Link to='/login'><button className="btn btn-secondary">Lets Start</button></Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="item4" className="carousel-item w-full relative">
                     <img src={img4} className="w-full" />
+                    <div className="absolute rounded-2xl flex text-white gap-6 items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
+                        <div className="w-2/3 mx-auto space-y-7 p-4">
+                            <h1 className="text-5xl text-center font-bold">Medical Camp Management System</h1>
+                            <h1 className="text-4xl text-center">Efficiently Organize Medical Camps with Ease!</h1>
+                            <p className="text-center">Welcome to our Medical Camp Management System, your comprehensive solution for orchestrating successful healthcare events. From scheduling and registration to resource allocation and reporting, our intuitive platform streamlines every aspect of medical camp management. With user-friendly interfaces and powerful features, we empower organizers to efficiently plan, execute, and evaluate medical camps.</p>
+                            <div className="flex justify-evenly">
+                                <Link to='/availableCamp'><button className="btn btn-primary">Explore More</button></Link>
+                                <Link to='/login'><button className="btn btn-secondary">Lets Start</button></Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
