@@ -8,9 +8,22 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 const Navbar = () => {
-
-
     const { user, logOutUser } = useContext(AuthContext);
+    // console.log(user);
+    const [emailUser, setUser] = useState([]);
+    useEffect(() => {
+        fetch(`https://server-site-lilac.vercel.app/joinUser/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setUser(data)
+                console.log(data)
+            })
+    }, [user])
+
+    // console.log(emailUser);
+
+
+    
     // console.log(user);
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
@@ -70,14 +83,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {
-                    user ?
+                    emailUser[0] ?
                         <div className="navbar-end gap-3">
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         {
-                                            user.photoURL ?
-                                                <img alt="user" src={user.photoURL} />
+                                            emailUser[0].photo ?
+                                                <img alt="user" src={emailUser[0]?.photo} />
                                                 :
                                                 <img alt="user" src={user1} />
                                         }

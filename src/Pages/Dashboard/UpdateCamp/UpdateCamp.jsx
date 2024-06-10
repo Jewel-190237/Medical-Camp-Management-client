@@ -62,45 +62,51 @@ const UpdateCamp = () => {
     }
     return (
         <div>
+            <div>
+                <h2 className="text-3xl font-bold text-center mt-8 text-emerald-400">Update Camp</h2>
+                <p className="text-center mx-auto md:w-3/4 mb-10">
+                    <p>Adventure Awaits: Exciting Updates at Wilderness Adventure Camp! Reserve Your Spot Now! </p>
+                </p>
+            </div>
             <form onSubmit={handleUpdateCamp}>
                 <div className="md:flex gap-4 ">
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200">Camp Name: </span>
+                        <span className="label-text ">Camp Name: </span>
                         <input type="text" name="campName" defaultValue={campName} className="input input-bordered w-full input-success" />
                     </div>
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200">Participant Count: </span>
+                        <span className="label-text ">Participant Count: </span>
                         <input type="number" name="participantCount" defaultValue={participantCount} className="input input-bordered w-full input-success" />
                     </div>
 
                 </div>
                 <div className="md:flex gap-4 ">
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200">Healthcare Professional Name: </span>
+                        <span className="label-text ">Healthcare Professional Name: </span>
                         <input type="text" name="healthCarePName" defaultValue={healthCarePName} className="input input-bordered w-full input-success" />
                     </div>
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200">Camp Fees:</span>
+                        <span className="label-text ">Camp Fees:</span>
                         <input type="number" name="campFees" defaultValue={campFees} className="input input-bordered w-full input-success" />
                     </div>
                 </div>
                 <div className="md:flex gap-4">
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200">Photo url: </span>
+                        <span className="label-text ">Photo url: </span>
                         <input type="text" name="photo_url" defaultValue={photo_url} className="input input-success input-bordered w-full" />
                     </div>
-                    <div className="form-control p-4 text-lime-200">
+                    <div className="form-control p-4 ">
                         Select Due Time:
                         <DatePicker className=" input input-success input-bordered " showIcon selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                 </div>
                 <div className="md:flex gap-4 mb-4 ">
                     <div className="form-control w-full p-4">
-                        <span className="label-text text-lime-200">Location:</span>
+                        <span className="label-text ">Location:</span>
                         <input type="text" name="location" defaultValue={location} className="input input-success input-bordered w-full" />
                     </div>
                     <div className="form-control w-full p-4">
-                        <span className="label-text text-lime-200">Description:</span>
+                        <span className="label-text ">Description:</span>
                         <input type="text" name="description" defaultValue={description} className="input input-success input-bordered w-full" />
                     </div>
                 </div>

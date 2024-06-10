@@ -4,8 +4,14 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import useAxios from "../../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import { FaUsers } from "react-icons/fa";
+import { MdPayment } from "react-icons/md";
+import { CiMedicalCase } from "react-icons/ci";
+import { FaHouseMedicalCircleCheck } from "react-icons/fa6";
 
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, } from 'recharts';
+
+
+
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -78,31 +84,13 @@ const AdminHome = () => {
         return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
     };
 
-    //pie chart
-    const pieData = [
-        { name: 'Users', value: information.users },
-        { name: 'Camps', value: information.camps },
-        { name: 'registeredCamp', value: information.registeredCamps },
-        { name: 'Payments', value: information.payments },
-    ];
-    const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-        return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
-    };
-
+  
+    
     return (
         <div className="m-10">
             <h2 className="text-4xl">
                 <span> Welcome </span>
-                <span className="text-pink-800">
+                <span className="text-blue-600">
                     {
                         currentUser[0]?.name ? currentUser[0].name : 'Back'
                     }
@@ -110,34 +98,34 @@ const AdminHome = () => {
                 <span> to Analytics</span>
             </h2>
             <div>
-                <div className="flex gap-4 justify-center">
-                    <div className="stat border border-lime-800 rounded-2xl bg-slate-700 mx-auto">
+                <div className="flex gap-4 justify-center mt-8">
+                    <div className="stat border border-lime-800 rounded-2xl mx-auto">
                         <div className="stat-title text-center"> Total Users</div>
                         <div className="stat-value text-primary flex gap-3 mx-auto"><FaUsers></FaUsers>{information?.users}</div>
                         <div className="stat-desc text-center">21% more than last month</div>
                     </div>
-                    <div className="stat border border-lime-800 rounded-2xl bg-slate-700 mx-auto">
+                    <div className="stat border border-lime-800 rounded-2xl  mx-auto">
                         <div className="stat-title text-center"> Total Camp</div>
-                        <div className="stat-value text-primary flex gap-3 mx-auto"><FaUsers></FaUsers>{information?.camps}</div>
+                        <div className="stat-value text-primary flex gap-3 mx-auto"><CiMedicalCase></CiMedicalCase> {information?.camps}</div>
                         <div className="stat-desc text-center">21% more than last month</div>
                     </div>
-                    <div className="stat border border-lime-800 rounded-2xl bg-slate-700 mx-auto">
+                    <div className="stat border border-lime-800 rounded-2xl  mx-auto">
                         <div className="stat-title text-center"> Total Registered Camp</div>
-                        <div className="stat-value text-primary flex gap-3 mx-auto"><FaUsers></FaUsers>{information?.registeredCamps}</div>
+                        <div className="stat-value text-primary flex gap-3 mx-auto items-center"><FaHouseMedicalCircleCheck></FaHouseMedicalCircleCheck> {information?.registeredCamps}</div>
                         <div className="stat-desc text-center">21% more than last month</div>
                     </div>
-                    <div className="stat border border-lime-800 rounded-2xl bg-slate-700 mx-auto">
+                    <div className="stat border border-lime-800 rounded-2xl mx-auto">
                         <div className="stat-title text-center"> Total Payments</div>
-                        <div className="stat-value text-primary flex gap-3 mx-auto"><FaUsers></FaUsers>{information?.payments}</div>
+                        <div className="stat-value text-primary flex gap-3 mx-auto items-center"><MdPayment></MdPayment> {information?.payments}</div>
                         <div className="stat-desc text-center">21% more than last month</div>
                     </div>
                 </div>
             </div>
-            <div className="flex">
-                <div className="w-1/2">
+            <div className="flex w-full justify-center mt-4">
+                <div className="w-full">
                     <BarChart
-                        width={500}
-                        height={300}
+                        width={900}
+                        height={500}
                         data={data}
                         margin={{
                             top: 20,
@@ -156,24 +144,7 @@ const AdminHome = () => {
                         </Bar>
                     </BarChart>
                 </div>
-                <div className="w-1/2">
-                    <PieChart width={400} height={400}>
-                        <Pie
-                            data={pieData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={renderCustomizedLabel}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                        >
-                            {data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                            ))}
-                        </Pie>
-                    </PieChart>
-                </div>
+                
             </div>
         </div>
     );

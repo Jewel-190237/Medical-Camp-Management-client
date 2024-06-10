@@ -103,7 +103,7 @@ const AllUsers = () => {
                                 </td>
                                 <th>{item.email}</th>
                                 <th>
-                                    { item.role === 'admin' ? 'Admin': <button onClick={() => handleMakeAdmin(item)} className="btn btn-ghost btn-lg bg-orange-500"><FaUsers className="text-white text-2xl  "></FaUsers></button>}
+                                    { item.role === 'admin' ? 'Admin': <button onClick={() => handleMakeAdmin(item)} className="btn btn-ghost btn-lg bg-slate-600"><FaUsers className="text-white text-2xl  "></FaUsers></button>}
                                 </th>
                                 <th>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost btn-lg"><FaTrashAlt className="text-red-800"></FaTrashAlt></button>
