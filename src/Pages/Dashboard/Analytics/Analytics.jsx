@@ -8,15 +8,14 @@ import { MdPayment } from "react-icons/md";
 import { CiMedicalCase } from "react-icons/ci";
 import { FaHouseMedicalCircleCheck } from "react-icons/fa6";
 
-
-
-
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-const AdminHome = () => {
+
+
+const Analytics = () => {
     const axiosSecure = useAxios()
     const { user } = useContext(AuthContext);
 
@@ -82,7 +81,6 @@ const AdminHome = () => {
     };
 
   
-    
     return (
         <div className="m-10">
             <h2 className="text-4xl">
@@ -147,4 +145,4 @@ const AdminHome = () => {
     );
 };
 
-export default AdminHome;
+export default Analytics;

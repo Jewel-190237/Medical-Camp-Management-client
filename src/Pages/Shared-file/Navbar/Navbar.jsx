@@ -23,7 +23,7 @@ const Navbar = () => {
     // console.log(emailUser);
 
 
-    
+
     // console.log(user);
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
@@ -44,12 +44,7 @@ const Navbar = () => {
     const navLinks = <>
         <li id="link"> <NavLink to='/'>Home </NavLink> </li>
         <li id="link1"> <NavLink to='/availableCamp'>Available Camp</NavLink></li>
-        {
-            user &&
-            <li id="link1"> <NavLink to='/joinUs'>Join Us</NavLink></li>
-        }
-        
-
+        <li id="link1"> <NavLink to='/joinUs'>Join Us</NavLink></li>
     </>
 
     const handleSignOut = () => {
@@ -98,9 +93,10 @@ const Navbar = () => {
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-
+                                    <li className="ml-3"> {emailUser[0]?.name} </li>
                                     <li> <NavLink to='/dashboard'>Dashboard</NavLink></li>
                                     <li onClick={handleSignOut}><a>Logout</a></li>
+
                                 </ul>
                             </div>
 
