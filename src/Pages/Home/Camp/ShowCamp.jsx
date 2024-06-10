@@ -4,7 +4,7 @@ import { FcViewDetails } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const ShowCamp = ({ camp }) => {
-    const { _id, campName, healthCarePName, location, participantCount, photo_url, time,  campFees } = camp;
+    const { _id, campName, healthCarePName, participantCount, photo_url, campFees } = camp;
     console.log(camp);
     console.log(campName, campFees);
 
@@ -16,13 +16,12 @@ const ShowCamp = ({ camp }) => {
                     <h2 className="text-green-600 text-2xl font-bold">
                         {campName}
                     </h2>
-                    <p className="text-green-600 font-bold mb-4"><span className="font-bold"> {healthCarePName} </span> </p>
-                    <hr/>
-                    <p className="text-green-600 text-xl font-bold">Camp </p>
-                    <p className="text-green-600">Camp Fees <span className="font-bold ml-5"> {campFees} </span> </p>
-                    <p className="text-green-600">Participant: <span className="font-bold ml-5"> {participantCount} </span></p>
-                    <p className="text-green-600">Time: <span className="font-bold ml-5"> {time} </span></p>
-                    <p className="text-green-600">Location: <span className="font-bold ml-5"> {location} </span></p>
+                    <p className="text-green-600 mb-4"><span className="text-xl">Specialist:  {healthCarePName} </span> </p>
+                    <hr />
+                    <div className="flex justify-between">
+                        <p className="text-green-600">Camp Fees: <span className="font-bold "> {campFees} </span> </p>
+                        <p className="text-green-600">Participant: <span className="font-bold"> {participantCount} </span></p>
+                    </div>
                     <hr />
                     <div className="flex justify-between gap-4">
                         <Link to={`/campDetails/${_id}`} className="btn btn-outline btn-block my-2 bg-emerald-800 ">
@@ -31,7 +30,7 @@ const ShowCamp = ({ camp }) => {
                                 View Details
                             </button>
                         </Link>
-                        
+
                     </div>
                 </div>
             </div>

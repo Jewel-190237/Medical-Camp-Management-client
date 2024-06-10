@@ -17,29 +17,14 @@ const AvailableCamp = () => {
     })
 
     console.log(camps);
-    const [value, setValue] = useState([]);
     const [allCamp, setAllCamp] = useState(camps);
     // console.log(allCamp)
     refetch();
 
-    const handleLevel = (event) => {
-        setValue(event.target.value)
-    }
-    const level = value.toString();
-    // const level = 'Easy';
-    // const level = 'Medium';
-    // console.log(typeof level)
-    console.log(level)
+
 
     const [query, setQuery] = useState('');
     console.log(query);
-
-    // console.log('Camp Name = ', allCamp[0]?.campName);
-    // const allCampName = allCamp.map(item => ({ name: item.campName }));
-    // console.log('All camp name in here', allCampName);
-
-
-
 
 
     useEffect(() => {
@@ -54,15 +39,15 @@ const AvailableCamp = () => {
 
     return (
         <div>
-            <div className="flex justify-evenly m-4">
-                <input onChange={e => setQuery(e.target.value)} type="text" name="campName" placeholder="Type a camp name" className="input input-bordered input-success w-full max-w-xs" />
-                <p className="text-center font-bold m-4 text-emerald-400 text-xl ">Difficulty Level:
-                    <select className='text-xl form-select ml-8' name="difficultyLevel" onChange={handleLevel} >
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
-                    </select>
+            <div>
+                <h2 className="text-3xl font-bold text-center mt-8 text-emerald-400">Available Camp</h2>
+                <p className="text-center mx-auto md:w-3/4 mb-10">
+                    <p className="text-center">Join us for a day dedicated to promoting health and wellness within our community! The Community Health and Wellness Fair is a free event open to all ages, offering a wide range of healthcare services and educational resources. At the fair, attendees will have the opportunity to receive complimentary health screenings including blood pressure checks, cholesterol tests, and glucose monitoring</p>
                 </p>
+            </div>
+            <div className="text-center mb-4">
+                <input onChange={e => setQuery(e.target.value)} type="text" name="campName" placeholder="Type a camp name" className="input input-bordered input-success w-full max-w-xs" />
+                
             </div>
             <div>
                 <div className="grid md:grid-cols-3 grid-cols-1 gap-6">

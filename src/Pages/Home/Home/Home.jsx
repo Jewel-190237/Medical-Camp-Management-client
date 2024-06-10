@@ -10,6 +10,8 @@ import d4 from '../../../assets/d4.jpg'
 import d5 from '../../../assets/d5.jpg'
 import d6 from '../../../assets/d6.jpg'
 import vax from '../../../assets/vax.png'
+import FAQ from "../FAQ/FAQ";
+
 
 const Home = () => {
     // const axiosSecure = useAxios();
@@ -174,7 +176,14 @@ const Home = () => {
                 </div>
             </div>
 
-
+            {/* REview Section */}
+            <div>
+                
+            </div>
+            {/* FAQ */}
+            <div>
+                <FAQ></FAQ>
+            </div>
         </div>
     );
 };

@@ -52,16 +52,16 @@ const UpdateProfile = () => {
             <form onSubmit={handleUpdateProfile}>
                 <div className="md:flex gap-4 ">
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200"> Name: </span>
+                        <span className="label-text"> Name: </span>
                         <input type="text" name="name" defaultValue={user[0]?.name} className="input input-bordered w-full input-success" />
                     </div>
                     <div className="form-control md:w-1/2 p-4">
-                        <span className="label-text text-lime-200">Email</span>
+                        <span className="label-text ">Email</span>
                         <input type="text" name="email" defaultValue={user[0]?.email} className="input input-bordered w-full input-success" />
                     </div>
                 </div>
                 <div className="form-control md:w-full p-4">
-                    <span className="label-text text-lime-200">Photo url: </span>
+                    <span className="label-text ">Photo url: </span>
                     <input type="text" name="photo" defaultValue={user[0]?.photo} className="input input-bordered w-full input-success" />
                 </div>
                 <button className=" btn btn-block bg-emerald-800 btn-outline">

@@ -21,13 +21,13 @@ const Profile = () => {
     return (
         <div className=" bg-base-100 w-1/2 shadow-xl mx-auto">
             <figure className="px-10 pt-10">
-                <img className="rounded-full mx-auto" src={emailUser[0]?.photo} alt= {emailUser[0]?.name} />
+                <img className="rounded-full w-1/2 mx-auto" src={emailUser[0]?.photo} alt={emailUser[0]?.name} />
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">Name: {emailUser[0]?.name}</h2>
                 <h2 className="card-title">Email: {emailUser[0]?.email}</h2>
-                <div className="card-actions">
-                <Link to={`/dashboard/updateProfile/${emailUser[0]?.email}`}> <button  className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"> </FaEdit> Update Profile </button></Link>
+                <div className="card-actions border border-green-700 rounded-3xl">
+                    <Link  to={`/dashboard/updateProfile/${emailUser[0]?.email}`}> <button className="btn btn-ghost btn-lg"> <FaEdit className="text-orange-400"> </FaEdit> Update Profile </button></Link>
                 </div>
             </div>
         </div>
