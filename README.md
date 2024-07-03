@@ -1,6 +1,6 @@
 
-
-<b>My website name is : </b> MediCare (Full Stack Medical Camp Management System) </br>
+<h1>About Projects</h1>
+<b> Website name: </b> MediCare (Full Stack Medical Camp Management System) </br>
 <b>Admin Email: </b> jewel@12.com </br>
 <b>Admin Password: </b> Jewel190237 </br>
 <b>Live link: </b> https://medical-camp-management-6978c.web.app/ </br>
