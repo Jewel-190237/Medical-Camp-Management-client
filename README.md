@@ -7,7 +7,7 @@
 <b>Server Site: </b>https://github.com/Jewel-190237 Medical-Camp-Management-server</br>
 </br>
 
-
+<h1>Functionality</h1>
 <p> Medical Camp Management System is a advanced Full Stack web application, have different roles like(Admin and general users). offering essential features to facilitate seamless online transactions and user management</p>
 
 <ul>
@@ -22,6 +22,18 @@
 <li> <b>Payment Method:</b> Offers secure card payment methods, ensuring trust and reliability in transactions.</li>
 </ul>
 <li> <b>Confirmation:</b> First, you should make the payment. After the payment is successfully made, the admin will show the details and confirm the transaction. Once confirmed, it is finalized.</li>
+</ul>
+
+<h1>Special Features</h1>
+<ul>
+<li>Efficient contest oversight with multi-dashboard control for seamless management.
+</li>
+<li>Secure payments system, Booking System with Cancellation and Update Functionality.
+</li>
+<li>JWT Authentication for Secure Private Routes. User can find popular camp by searching.
+</li>
+<li>Upgraded conformation system where user pay first then after confirming by admin it confirmed.
+</li>
 </ul>
 
 <h1>Technologies Used</h1>
