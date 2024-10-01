@@ -4,7 +4,7 @@
 <b>Admin Email: </b> jewel@12.com </br>
 <b>Admin Password: </b> Jewel190237 </br>
 <b>Live link: </b> https://medical-camp-management-6978c.web.app/ </br>
-<b>Server Site: </b>https://github.com/Jewel-190237 Medical-Camp-Management-server</br>
+<b>Server Site: </b>https://github.com/Jewel-190237Medical-Camp-Management-server</br>
 </br>
 
 <h1>Functionality</h1>
