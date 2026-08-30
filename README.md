@@ -1,49 +1,175 @@
+# MediCare - Medical Camp Management System
 
-<h1>About Projects</h1>
-<b> Website name: </b> MediCare (Full Stack Medical Camp Management System) </br>
-<b>Admin Email: </b> jewel@12.com </br>
-<b>Admin Password: </b> Jewel190237 </br>
-<b>Live link: </b> https://medical-camp-management-6978c.web.app/ </br>
-<b>Server Site: </b> https://github.com/Jewel-190237/Medical-Camp-Management-server </br>
-</br>
+A comprehensive full-stack medical camp management system built with React.js, Node.js, Express.js, MongoDB, and Firebase. Features role-based access control for admin and users, secure payments, and camp management.
 
-<h1>Functionality</h1>
-<p> Medical Camp Management System is a advanced Full Stack web application, have different roles like(Admin and general users). offering essential features to facilitate seamless online transactions and user management</p>
+## Features
 
-<ul>
-     <li> <b>Camp Management (AddCamp):</b> Private/protected routes for users to manage their Medical Details.</li>
- <li>
- <b>Update/Delete Functionality::</b>  Allows admin to update or delete medicines, ensuring database accuracy and product management.
- </li>
- <li>
-  <b>User Registration and Login:</b> Provides a user-friendly registration form with validation and login functionality. And also can login using any google account.
- </li>
- <li> <b>Search and Sort:</b> Facilitates easy navigation through Medical names </li>
-<li> <b>Payment Method:</b> Offers secure card payment methods, ensuring trust and reliability in transactions.</li>
-</ul>
-<li> <b>Confirmation:</b> First, you should make the payment. After the payment is successfully made, the admin will show the details and confirm the transaction. Once confirmed, it is finalized.</li>
-</ul>
+- **Camp Management:** Add, update, and delete medical camps
+- **User Authentication:** Email/password and Google OAuth login
+- **Role-Based Access:** Admin and user dashboards
+- **Payment System:** Secure card payment integration
+- **Search & Filter:** Find camps by name, location, and date
+- **Responsive Design:** Mobile-friendly interface
+- **JWT Authentication:** Secure API endpoints
+- **Real-time Updates:** Dynamic content updates
 
-<h1>Special Features</h1>
-<ul>
-<li>Efficient contest oversight with multi-dashboard control for seamless management.
-</li>
-<li>Secure payments system, Booking System with Cancellation and Update Functionality.
-</li>
-<li>JWT Authentication for Secure Private Routes. User can find popular camp by searching.
-</li>
-<li>Upgraded conformation system where user pay first then after confirming by admin it confirmed.
-</li>
-</ul>
+## Live Demo
 
-<h1>Technologies Used</h1>
-HTML, CSS, JavaScript, Firebase, MongoDB, React.js, Express.js, Node.js,  JWT, axios and Tailwind CSS etc </br>
+- **Frontend:** https://medical-camp-management-6978c.web.app/
+- **Backend:** https://github.com/Jewel-190237/Medical-Camp-Management-server
 
-<h1>Clone Now</h1>
-<ol>
-<li>Clone the repository to your local machine.</li>
-<li>Install dependencies using npm install.</li>
-<li>Configure environment variables.</li>
-<li>Run the development server using npm run dev</li>
-</ol>
+## Admin Credentials
 
+- **Email:** jewel@12.com
+- **Password:** Jewel190237
+
+## Technologies Used
+
+### Frontend
+- React.js
+- Tailwind CSS
+- Axios
+- React Router
+- Firebase Authentication
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+- CORS
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB database
+- Firebase project
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Jewel-190237/Medical-Camp-Management-client.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file with the following variables:
+   ```env
+   VITE_API_URL=your_backend_api_url
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and visit `http://localhost:5173`
+
+## Project Structure
+
+```
+Medical-Camp-Management-client/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── context/
+│   ├── utils/
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── package.json
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+```
+
+## Functionality
+
+### Camp Management (AddCamp)
+- Private/protected routes for users to manage their medical details
+- Add new camps with images, descriptions, and schedules
+
+### Update/Delete Functionality
+- Allows admin to update or delete camps
+- Ensures database accuracy and camp management
+
+### User Registration and Login
+- User-friendly registration form with validation
+- Login functionality with email/password
+- Google OAuth integration for social login
+
+### Search and Sort
+- Facilitates easy navigation through medical camps
+- Search by camp name, location, and date
+
+### Payment Method
+- Secure card payment methods
+- Trust and reliability in transactions
+
+### Confirmation System
+- Users make payment first
+- Admin confirms the transaction
+- Final confirmation after admin approval
+
+## Special Features
+
+- **Multi-Dashboard Control:** Efficient camp oversight with separate admin and user dashboards
+- **Secure Payments:** Payment system with booking, cancellation, and update functionality
+- **JWT Authentication:** Secure private routes with JSON Web Tokens
+- **Popular Camps:** Users can find popular camps by searching
+- **Upgraded Confirmation:** Payment-first, then admin confirmation workflow
+
+## API Endpoints
+
+### Authentication
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - User login
+- `POST /api/auth/google` - Google OAuth login
+
+### Camps
+- `GET /api/camps` - Get all camps
+- `GET /api/camps/:id` - Get single camp
+- `POST /api/camps` - Create new camp (Admin)
+- `PUT /api/camps/:id` - Update camp (Admin)
+- `DELETE /api/camps/:id` - Delete camp (Admin)
+
+### Payments
+- `POST /api/payments` - Process payment
+- `GET /api/payments` - Get payment history
+
+### Users
+- `GET /api/users` - Get all users (Admin)
+- `PUT /api/users/:id` - Update user role (Admin)
+
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Contributing
+
+Feel free to fork this project and create pull requests for any improvements.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Author
+
+**Jewel-190237**
+- GitHub: [Jewel-190237](https://github.com/Jewel-190237)
+- Email: jewel190237@gmail.com
